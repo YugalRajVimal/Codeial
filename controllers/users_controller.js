@@ -4,6 +4,8 @@
     
 // }
 
+const users = require('../models/user')
+
 module.exports.profile = (req, res)=>{
     return res.render('user_profile', {
         title: 'User Profile'
@@ -25,6 +27,41 @@ module.exports.signIn = (req,res)=>{
 };
 
 // Get the sign up data
-module.exports.create = function(req,res){
+module.exports.create = async function(req,res){
+
+    if(req.body.password != req.body.confirm_password){
+        return res.redirect('back');
+    }
+
+    try {
+        let user = await users.findOne({email:req.body.email});
+        try {
+            if(!user){
+                await users.create(req.body);
+                //OR
+                // await users.insertMany({
+                //     email:req.body.email,
+                //     password:req.body.password,
+                //     name:req.body.name 
+                // });
+
+                console.log("New user's account created")
+                return res.redirect('/users/sign-in');
+            }
+            else{
+                console.log("Account already exist ")
+                return res.redirect('back');
+            }
+        } catch (error) {
+            console.log("Error in finding user in DB");
+        }
+    } catch (error) {
+        console.log("Error in finding user in DB");
+        return;
+    }
+
+}
+
+module.exports.createSession = function(req,res){
     //To Do
 }

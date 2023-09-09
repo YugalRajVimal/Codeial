@@ -7,7 +7,10 @@ const db = require("./config/mongoose");
 
 //Setting Layouts
 const expressLayouts = require('express-ejs-layouts');
+const cookieParser = require("cookie-parser");
 
+app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
 app.use(express.static('./assets'));
 
 app.use(expressLayouts);
