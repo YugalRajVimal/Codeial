@@ -1,2 +1,8 @@
 <link rel="stylesheet" href="/css/userProfile.css">
-    <h1>Codeial/ProfilePage</h1>
+    <h1><%= name %></h1>
+    <form action="/users/sign-out" method="POST">
+        <button type="submit">
+            Sign Out
+        </button>
+    </form>
+<script src="/js/userProfile.js"></script>
