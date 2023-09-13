@@ -7,40 +7,29 @@ const users = require('../models/user');
 passport.use(new LocalStrategy({
         usernameField:'email'
     },
-    function(email,password,done){
-        let user = users.findOne({email:email});
+    async function(email,password,done){
         try {
-            return done(null,user);
-        } catch (error) {
+            let user =await users.findOne({email:email});
             if(!user || user.password != password){
                 console.log("Invalid User/Password");
-                return done(error,false);
+                return done(null,false);
             }
+            return done(null,user);
+        } catch (error) {
             console.log("Error in finding user");
             return done(error);
         }
-    // users.findOne({email:email},function(error,user){
-    //     if(error){
-    //         console.log("Error in finding user");
-    //         return done(error);
-    //     }
-    //     if(!user || user.password != password){
-    //         console.log("Invalid User/Password");
-    //         return done(error,false);
-    //     }
-    //     return done(null,user);
-    // })
 }));
 
 
 //Serializing the user to decide which key is to be kept in the cookies
 passport.serializeUser(function(user,done){
-    process.nextTick(function() {
-        return done(null, {
-          id: user.id
-        });
-      });
-    // return done(null,user.id);
+    // process.nextTick(function() {
+    //     return done(null, {
+    //       id: user.id
+    //     });
+    //   });
+    return done(null,user.id); 
 });
 
 //Deserializing the user from the key in the cookies
