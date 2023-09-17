@@ -14,21 +14,22 @@ module.exports.profile = (req, res)=>{
 
 // Render the Sign Up page
 module.exports.signUp = (req,res)=>{
+    //ToDo - Check if user is already signed in or not
     return res.render('user_sign_up',{
         title:"Codeial" | "SignUp"
     });
 };
 
 // Render the Sign In page
-module.exports.signIn = (req,res)=>{
+module.exports.signIn =async (req,res)=>{
+    //ToDo - Check if user is already signed in or not
     return res.render('user_sign_in',{
-        title:"Codeial" | "SignIn"
+        title:"Codeial-SignIn"
     });
 };
 
 // Get the sign up data
 module.exports.create = async function(req,res){
-
     if(req.body.password != req.body.confirm_password){
         return res.redirect('back');
     }
