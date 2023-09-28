@@ -4,7 +4,7 @@ const router = express.Router();
 
 const passport = require('passport');
 
-const usersController = require('../controllers/users_controller')
+const usersController = require('../controllers/users_controller');
 
 console.log("Users Router is Loaded");
 

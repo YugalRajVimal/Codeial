@@ -1,0 +1,21 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: aquamarine;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    ul{
+        li{
+            list-style: none;
+            display: inline;
+            margin: auto 10px;
+        }
+    }
+}
+
+header{
+    h2{
+        margin: auto 20px;
+    }
+}

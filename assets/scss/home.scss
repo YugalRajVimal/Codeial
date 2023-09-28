@@ -2,3 +2,41 @@ h1{
     background-color: lightblue;
     color: rgb(79, 87, 234);
 }
+
+#users_name{
+    display: flex;
+    align-items:flex-start;
+}
+
+#content{
+    border:1px solid black;
+    margin-right: 40px;
+}
+
+#like-comment{
+    display: flex;
+    #like-button{
+        display: flex;
+        align-items:flex-start;
+        margin: 10px;
+    }
+}
+
+#like-comment{
+    #comment-button{
+        display: flex;
+        align-items:flex-start;
+        margin: 10px;
+    }
+}
+
+#like-comment{
+    #comment-button{
+        #comment:target{
+            display:block !important;  
+        }
+    }
+}
+
+
+

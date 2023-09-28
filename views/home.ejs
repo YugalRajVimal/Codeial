@@ -1,3 +1,41 @@
 <link rel="stylesheet" href="/css/home.css"> 
- <h1>Codeial/Home</h1>
+<h1>Codeial/Home</h1>
+<section id="feed-posts">
+    <% if(locals.user){ %>
+    <h4>Posts</h4>
+        <form action="/posts/create-post" id="new-post" method="POST">
+            <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
+            <br>
+            <br>
+            <input type="submit" value="Post">
+        </form>
+    <% } %>
+    <% if(locals.user){ %>
+        <section id="feed">
+            <ul>
+                <% for(let i of post){  %>
+                    <div id="post">
+                        <div id="users_name">
+                            <h5> <%= i.user %> </h5>
+                        </div>
+                        <div id="content">
+                            <h3> <%= i.content %> </h3>
+                        </div>
+                        <div id="like-comment">
+                            <div id="like-button">
+                                <a href=""> <i class="fa-regular fa-heart"></i> </a>
+                            </div>
+                            <!-- <div id="comment-button">
+                                <a href="#comment"><i class="fa-regular fa-comment"></i></a>
+                                <div class="comment-div" id="comment" style="display:none">
+                                    <h5>Comments</h5>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                <% } %>    
+            </ul>
+        </section>
+    <% } %>
+</section>
 
