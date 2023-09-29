@@ -2,9 +2,10 @@ const post_list = require('../models/post')
 
 
 module.exports.home =async function(request,response){
-    // return response.end('<h1>Express is up for Codeial - Home Controller</h1>')
     try {
-        let posts = await post_list.find({}).populate('user').exec();
+        let posts = await post_list.find({})
+        .sort('-createdAt') // this will sort a/q to time , if 1, 2, 3 --> 3 2 1 1st created 1 so it's last
+        .populate("user"); // populate the `user` field with the corresponding user(Collection Name) document
 
         return response.render('home',{
             "title":"Codeial",
@@ -18,3 +19,27 @@ module.exports.home =async function(request,response){
     
 }
 
+
+
+
+
+// module.exports.home = async (req, res) => {
+//     // console.log(req.cookies);
+//     // res.cookie('user_id',25);
+  
+//     try {
+//       // populate the user of each post ?
+//       let posts = await post_list.find({})
+//         .sort('-createdAt') // this will sort a/q to time , if 1, 2, 3 --> 3 2 1 1st created 1 so it's last
+//         .populate("user") // populate the `user` field with the corresponding user(Collection Name) document
+//       let users = await user_list.find({});
+  
+//       return res.render("home", {
+//         title: "Codeail | Home",
+//         post: posts
+//       });
+//     } catch (err) {
+//       console.log("Error", err);
+//       return;
+//     }
+//   };
