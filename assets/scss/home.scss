@@ -15,25 +15,67 @@ h1{
 
 #like-comment{
     display: flex;
-    #like-button{
+    align-items: center;
+
+    &>#like-button{
         display: flex;
         align-items:flex-start;
         margin: 10px;
     }
-}
-
-#like-comment{
-    #comment-button{
-        display: flex;
-        align-items:flex-start;
-        margin: 10px;
+    &>#comment{
+        &>textarea{
+            margin: 8px;
+        }
+        &>form{
+            margin: auto;
+            display: flex;
+             align-items: center;
+            button{
+             border: 0;
+             background-color: white;
+             padding: 5px;
+            }
+         }
     }
 }
 
-#like-comment{
-    #comment-button{
-        #comment:target{
-            display:block !important;  
+#post-delete-button{
+    padding: 5px;
+    a{
+        color: black;
+    }
+}
+
+#current-posts-comments{
+    ul{
+        li{
+            list-style: none;
+
+            #comment-details{
+                display: flex;
+                flex-direction: column;
+                justify-content:right;
+                font-family: monospace;
+
+                #user-commented , #commented-content {
+                    display: flex;
+                    justify-content: left;
+                    align-items: center;
+
+                    &>p{
+                        margin: 2px 10px;
+                        font-size: large;
+                        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                    }
+
+                    &>span{
+                        a{
+                            color: black;
+                        }
+                    }
+                    
+                }
+            }
         }
     }
 }

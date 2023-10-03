@@ -11,16 +11,42 @@ h1 {
   margin-right: 40px; }
 
 #like-comment {
-  display: flex; }
-  #like-comment #like-button {
+  display: flex;
+  align-items: center; }
+  #like-comment > #like-button {
     display: flex;
     align-items: flex-start;
     margin: 10px; }
+  #like-comment > #comment > textarea {
+    margin: 8px; }
+  #like-comment > #comment > form {
+    margin: auto;
+    display: flex;
+    align-items: center; }
+    #like-comment > #comment > form button {
+      border: 0;
+      background-color: white;
+      padding: 5px; }
 
-#like-comment #comment-button {
-  display: flex;
-  align-items: flex-start;
-  margin: 10px; }
+#post-delete-button {
+  padding: 5px; }
+  #post-delete-button a {
+    color: black; }
 
-#like-comment #comment-button #comment:target {
-  display: block !important; }
+#current-posts-comments ul li {
+  list-style: none; }
+  #current-posts-comments ul li #comment-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    font-family: monospace; }
+    #current-posts-comments ul li #comment-details #user-commented, #current-posts-comments ul li #comment-details #commented-content {
+      display: flex;
+      justify-content: left;
+      align-items: center; }
+      #current-posts-comments ul li #comment-details #user-commented > p, #current-posts-comments ul li #comment-details #commented-content > p {
+        margin: 2px 10px;
+        font-size: large;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
+      #current-posts-comments ul li #comment-details #user-commented > span a, #current-posts-comments ul li #comment-details #commented-content > span a {
+        color: black; }
