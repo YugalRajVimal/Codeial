@@ -50,3 +50,19 @@ h1 {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
       #current-posts-comments ul li #comment-details #user-commented > span a, #current-posts-comments ul li #comment-details #commented-content > span a {
         color: black; }
+
+#main {
+  display: flex;
+  justify-content: space-around; }
+  #main > #feed {
+    height: auto;
+    width: 50%; }
+  #main > #users {
+    display: flex;
+    align-items: center;
+    font-size: larger;
+    height: auto;
+    width: 20%; }
+    #main > #users li {
+      list-style: none;
+      margin: 10px; }

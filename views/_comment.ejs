@@ -1,0 +1,22 @@
+<ul>
+    <% for(var j=0;j<post[i].comment.length;j++){ %>
+        <li>
+            <div id="comment-details">
+                <div id="user-commented"><small> <%= post[i].comment[j].user.name %> </small></div>
+                <div id="commented-content">
+                    <p> 
+                        <%= post[i].comment[j].content %> 
+                    </p> 
+                    <% if( locals.user && (locals.user._id ==  post[i].user.id) || (locals.user._id == post[i].comment[j].user.id) ){ %>
+                        <span>  
+                            <a href="/comments/delete-comment/?id=<%= post[i].comment[j]._id %>">
+                                <i class="fa-solid fa-trash"></i> 
+                            </a>
+                        </span>
+                    <% } %>
+                    
+                </div>
+            </div>
+        </li>
+    <% } %>
+</ul>

@@ -1,6 +1,20 @@
 <link rel="stylesheet" href="/css/userProfile.css">
-    <h1> <%= user.name %> </h1>
-    <h5> <%= user.email %> </h5>
+    <h2>----- Profile Page -----</h2>
+
+    <% if(profile_user.id == locals.user.id){ %>
+        <!-- if user matches then show the form -->
+        <form action="/users/update" method="POST">
+            <input type="text" name="name" value="<%= profile_user.name %>">
+            <input type="email" name="email" value="<%= profile_user.email %>">
+            <button type="submit">
+                Update
+            </button>
+        </form>
+    <% }else{ %>
+        <!-- else show only the profile info -->
+        <h1> <%= profile_user.name %> </h1>
+        <h5> <%= profile_user.email %> </h5>
+    <% } %>
     <!-- <form action="/users/sign-out" method="POST">
         <button type="submit">
             Sign Out

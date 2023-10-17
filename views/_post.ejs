@@ -1,0 +1,49 @@
+<ul>
+    
+    <% for(var i=0;i<post.length;i++){  %>
+        
+        <div id="post">
+            <div id="users_name">
+                <h5> <%= post[i].user.name %> </h5>
+            </div>
+            <div id="content">
+                <h3> <%= post[i].content %> </h3>
+            </div>
+            <div id="like-comment">
+                <div id="like-button">
+                    <a href=""> <i class="fa-regular fa-heart"></i> </a>
+                </div>
+                <div id="comment">
+                    <% if(locals.user){ %>
+                        <form action="/comments/create-comment/?id=<%= post[i]._id %>" method="POST">
+                            <textarea name="content" id="comment-textarea" cols="20" rows="1"></textarea>
+                            <button type="submit">
+                                <i class="fa-regular fa-comment"></i>
+                            </button>
+                        </form>
+                    <% } %>
+                </div>
+                <div>
+                    <div id="post-delete-button">
+                        <% if(locals.user && post[i].user.id == locals.user.id){ %>
+                            <a href="/posts/delete-post/?id=<%= post[i]._id %>">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                            <!-- <form action="/posts/delete-post/?id=<%= post[i]._id %>" method="POST">
+                                <button type="submit">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form> -->
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <div id="current-posts-comments">
+                <%- include('_comment',{
+                    i:i
+                }); %>
+            </div>
+        </div>
+    <% } %>
+    
+</ul>

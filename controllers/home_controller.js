@@ -1,5 +1,6 @@
 const post_list = require('../models/post')
 const comment_list = require('../models/comment')
+const user_list =  require('../models/user');
 
 
 module.exports.home =async function(request,response){
@@ -17,10 +18,11 @@ module.exports.home =async function(request,response){
                 path:'user' // populate the `user` field with the corresponding user(Collection Name) document
             }
         });
-
+        let users = await user_list.find({});
         return response.render('home',{
             "title":"Codeial",
             "post":posts,
+            "users":users,
             // "comment":comments
         });
 

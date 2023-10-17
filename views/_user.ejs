@@ -1,0 +1,7 @@
+<ul>
+    <% for(var i=0;i<users.length;i++){  %>
+        <li>
+            <a href="/users/profile/?id=<%= users[i].id %>"> <%= users[i].name %> </a>
+        </li>
+    <% }%>
+</ul>

@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/home.css"> 
-<h1>Codeial/Home</h1>
+<h1>Codeial Home</h1>
 <section id="feed-posts">
     <% if(locals.user){ %>
     <h4>Posts</h4>
@@ -11,73 +11,15 @@
         </form>
     <% } %>
     <% if(locals.user){ %>
-        <section id="feed">
-            <ul>
-                <% for(var i=0;i<post.length;i++){  %>
-                    <div id="post">
-                        <div id="users_name">
-                            <h5> <%= post[i].user.name %> </h5>
-                        </div>
-                        <div id="content">
-                            <h3> <%= post[i].content %> </h3>
-                        </div>
-                        <div id="like-comment">
-                            <div id="like-button">
-                                <a href=""> <i class="fa-regular fa-heart"></i> </a>
-                            </div>
-                            <div id="comment">
-                                <% if(locals.user){ %>
-                                    <form action="/comments/create-comment/?id=<%= post[i]._id %>" method="POST">
-                                        <textarea name="content" id="comment-textarea" cols="20" rows="1"></textarea>
-                                        <button type="submit">
-                                            <i class="fa-regular fa-comment"></i>
-                                        </button>
-                                    </form>
-                                <% } %>
-                            </div>
-                            <div>
-                                <div id="post-delete-button">
-                                    <% if(locals.user && post[i].user.id == locals.user.id){ %>
-                                        <a href="/posts/delete-post/?id=<%= post[i]._id %>">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </a>
-                                        <!-- <form action="/posts/delete-post/?id=<%= post[i]._id %>" method="POST">
-                                            <button type="submit">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                        </form> -->
-                                    <% } %>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="current-posts-comments">
-                            <ul>
-                                <% for(var j=0;j<post[i].comment.length;j++){ %>
-                                    <li>
-                                        <div id="comment-details">
-                                            <div id="user-commented"><small> <%= post[i].comment[j].user.name %> </small></div>
-                                            <div id="commented-content">
-                                                <p> 
-                                                    <%= post[i].comment[j].content %> 
-                                                </p> 
-                                                <% if( locals.user && (locals.user._id ==  post[i].user.id) || (locals.user._id == post[i].comment[j].user.id) ){ %>
-                                                    <span>  
-                                                        <a href="/comments/delete-comment/?id=<%= post[i].comment[j]._id %>">
-                                                            <i class="fa-solid fa-trash"></i> 
-                                                        </a>
-                                                    </span>
-                                                <% } %>
-                                                
-                                            </div>
-                                        </div>
-                                    </li>
-                                <% } %>
-                            </ul>
-                        </div>
-                    </div>
-                <% } %>    
-            </ul>
-        </section>
+        <div id="main">
+            <section id="feed">
+                <%- include('_post'); %>  
+            </section>
+            <section id="users">
+                <%- include('_user'); %>  
+            </section>
+        </div>
+        
     <% } %>
 </section>
 

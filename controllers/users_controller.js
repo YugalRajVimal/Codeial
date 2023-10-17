@@ -7,10 +7,22 @@
 const LocalStrategy = require("../config/passport-local-strategy");
 const users = require('../models/user')
 
-module.exports.profile = (req, res)=>{
-    return res.render('user_profile', {
-        title: 'User Profile'
-    });
+module.exports.profile =async (req, res)=>{
+
+    try {
+        // console.log(req.query.id);
+        let user = await users.findById(req.query.id);
+        // console.log(user);
+        return res.render('user_profile', {
+            title: 'User Profile',
+            profile_user: user,
+        });
+    } catch (error) {
+        console.log("Error in finding user",error);
+        return;
+    }
+
+    
 };
 
 // Render the Sign Up page
@@ -78,6 +90,23 @@ module.exports.create = async function(req,res){
         return;
     }
 
+}
+
+module.exports.updateUser= async function(req,res){
+    console.log(res.locals.user);
+    console.log(req.body.name);
+    console.log(req.body.email);
+    await users.findByIdAndUpdate(res.locals.user.id,{
+        name:req.body.name,
+        email:req.body.email
+    });
+
+    return res.redirect('/');
+
+    // return res.render('user_profile', {
+    //     title: 'User Profile',
+    //     profile_user: user,
+    // });
 }
 
 module.exports.createSession =function(req, res){
