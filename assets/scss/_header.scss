@@ -5,11 +5,17 @@ header{
     width: 100%;
     position: sticky;
     top: 0px;
-    ul{
+    &>ul{
         li{
             list-style: none;
             display: inline;
             margin: auto 10px;
+        }
+    }
+    &>#website-name{
+        a{
+            text-decoration: none;
+                color: black;
         }
     }
 }

@@ -7,8 +7,16 @@ h1 {
   align-items: flex-start; }
 
 #content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 1px solid black;
   margin-right: 40px; }
+  #content #post-image {
+    width: 600px;
+    overflow-x: hidden;
+    margin: 10px; }
 
 #like-comment {
   display: flex;
@@ -62,7 +70,11 @@ h1 {
     align-items: center;
     font-size: larger;
     height: auto;
-    width: 20%; }
+    width: 20%;
+    border-left: 1px solid black; }
     #main > #users li {
       list-style: none;
       margin: 10px; }
+      #main > #users li a {
+        text-decoration: none;
+        color: black; }

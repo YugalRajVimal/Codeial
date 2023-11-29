@@ -74,8 +74,8 @@ module.exports.create = async function(req,res){
                 //     password:req.body.password,
                 //     name:req.body.name 
                 // });
-
-                console.log("New user's account created")
+                req.flash('success','Signed Up Successfully');
+                // console.log("New user's account created")
                 return res.redirect('/users/sign-in');
             }
             else{
@@ -100,7 +100,7 @@ module.exports.updateUser= async function(req,res){
         name:req.body.name,
         email:req.body.email
     });
-
+    req.flash('success','Profil');
     return res.redirect('/');
 
     // return res.render('user_profile', {
@@ -110,6 +110,7 @@ module.exports.updateUser= async function(req,res){
 }
 
 module.exports.createSession =function(req, res){
+    req.flash('success','Logged In Successfully');
     return res.redirect('/');
 }
 
@@ -119,6 +120,19 @@ module.exports.destroySession = function(req, res){
             console.log(err);
             return; 
         }
+        req.flash('success','Logged Out Successfully');
         return res.redirect('/');
     });
+}
+
+
+
+module.exports.getUser =async function(req, res){
+    try {
+        const userId = req.query.id;
+        const user = await users.findById(userId);
+        res.json(user);
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
 }

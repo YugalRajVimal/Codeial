@@ -5,10 +5,13 @@ header {
   width: 100%;
   position: sticky;
   top: 0px; }
-  header ul li {
+  header > ul li {
     list-style: none;
     display: inline;
     margin: auto 10px; }
+  header > #website-name a {
+    text-decoration: none;
+    color: black; }
 
 header h2 {
   margin: auto 20px; }

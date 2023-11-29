@@ -3,8 +3,12 @@
 <section id="feed-posts">
     <% if(locals.user){ %>
     <h4>Posts</h4>
-        <form action="/posts/create-post" id="new-post" method="POST">
+        <form action="/posts/create-post" id="new-post-form" method="POST">
             <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
+            <br>
+            <br>
+            <input type="url" name="image" placeholder="Image-URL">
+            <!-- <input type="file" name="imageUrl" id="imageUrl" accept="images/*" /> -->
             <br>
             <br>
             <input type="submit" value="Post">
@@ -12,14 +16,16 @@
     <% } %>
     <% if(locals.user){ %>
         <div id="main">
-            <section id="feed">
-                <%- include('_post'); %>  
-            </section>
-            <section id="users">
+            <div id="feed">
+                <ul>
+                    <%- include('_post'); %>  
+                </ul>
+            </div>
+            <div id="users">
                 <%- include('_user'); %>  
-            </section>
+            </div>
         </div>
         
     <% } %>
 </section>
-
+<script src="/js/home_post.js"></script>
