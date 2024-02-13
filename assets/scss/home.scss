@@ -1,118 +1,115 @@
-h1{
-    background-color: lightblue;
-    color: rgb(79, 87, 234);
+h1 {
+  background-color: lightblue;
+  color: rgb(79, 87, 234);
 }
 
-#users_name{
-    display: flex;
-    align-items:flex-start;
+#users_name {
+  display: flex;
+  align-items: flex-start;
 }
 
-#content{
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  margin-right: 40px;
+  #post-image {
+    width: 600px;
+    overflow-x: hidden;
+    margin: 10px;
+  }
+}
+
+#like-comment {
+  display: flex;
+  align-items: center;
+
+  & > #like-button {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border:1px solid black;
-    margin-right: 40px;
-    #post-image{
-        width: 600px;
-        overflow-x: hidden;
-        margin: 10px;
+    align-items: flex-start;
+    margin: 10px;
+  }
+  & > #comment {
+    & > textarea {
+      margin: 8px;
     }
+    & > form {
+      margin: auto;
+      display: flex;
+      align-items: center;
+      button {
+        border: 0;
+        background-color: white;
+        padding: 5px;
+      }
+    }
+  }
 }
 
-#like-comment{
-    display: flex;
-    align-items: center;
+#post-delete-button {
+  padding: 5px;
+  a {
+    color: black;
+  }
+}
 
-    &>#like-button{
+#current-posts-comments {
+  ul {
+    li {
+      list-style: none;
+
+      #comment-details {
         display: flex;
-        align-items:flex-start;
-        margin: 10px;
-    }
-    &>#comment{
-        &>textarea{
-            margin: 8px;
-        }
-        &>form{
-            margin: auto;
-            display: flex;
-             align-items: center;
-            button{
-             border: 0;
-             background-color: white;
-             padding: 5px;
+        flex-direction: column;
+        justify-content: right;
+        font-family: monospace;
+
+        #user-commented,
+        #commented-content {
+          display: flex;
+          justify-content: left;
+          align-items: center;
+
+          & > p {
+            margin: 2px 10px;
+            font-size: large;
+            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+              "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+          }
+
+          & > span {
+            a {
+              color: black;
             }
-         }
+          }
+        }
+      }
     }
+  }
 }
 
-#post-delete-button{
-    padding: 5px;
-    a{
+#main {
+  display: flex;
+  justify-content: space-around;
+  & > #feed {
+    height: auto;
+    width: 50%;
+  }
+  & > #users {
+    display: flex;
+    font-size: larger;
+    height: auto;
+    width: 20%;
+    border-left: 1px solid black;
+    li {
+      list-style: none;
+      margin: 10px;
+      a {
+        text-decoration: none;
         color: black;
+      }
     }
+  }
 }
-
-#current-posts-comments{
-    ul{
-        li{
-            list-style: none;
-
-            #comment-details{
-                display: flex;
-                flex-direction: column;
-                justify-content:right;
-                font-family: monospace;
-
-                #user-commented , #commented-content {
-                    display: flex;
-                    justify-content: left;
-                    align-items: center;
-
-                    &>p{
-                        margin: 2px 10px;
-                        font-size: large;
-                        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                    }
-
-                    &>span{
-                        a{
-                            color: black;
-                        }
-                    }
-                    
-                }
-            }
-        }
-    }
-}
-
-#main{
-    display: flex;
-    justify-content: space-around;
-    &>#feed{
-        height: auto;
-        width: 50%;
-    }
-    &>#users{
-        display: flex;
-        align-items: center;
-        font-size: larger;
-        height: auto;
-        width: 20%;
-        border-left: 1px solid black;
-        li{
-            list-style: none;
-            margin: 10px;
-            a{
-                text-decoration: none;
-                color: black;
-            }
-        }
-    }
-}
-
-
-
