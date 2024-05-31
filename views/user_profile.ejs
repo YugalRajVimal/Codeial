@@ -1,23 +1,21 @@
-<link rel="stylesheet" href="/css/userProfile.css">
-    <h2>----- Profile Page -----</h2>
+<link rel="stylesheet" href="/css/userProfile.css" />
+<h2>----- Profile Page -----</h2>
+<img src="<%= profile_user.avatar %>" alt="Profile Picture" width="100" />
+<% if(profile_user.id == locals.user.id){ %>
+<form action="/users/update" enctype="multipart/form-data" method="POST">
+  <input type="text" name="name" value="<%= profile_user.name %>" />
+  <input type="email" name="email" value="<%= profile_user.email %>" />
+  <input type="file" name="avatar" placeholder="Profile Picture" />
+  <button type="submit">Update</button>
+</form>
 
-    <% if(profile_user.id == locals.user.id){ %>
-        <!-- if user matches then show the form -->
-        <form action="/users/update" method="POST">
-            <input type="text" name="name" value="<%= profile_user.name %>">
-            <input type="email" name="email" value="<%= profile_user.email %>">
-            <button type="submit">
-                Update
-            </button>
-        </form>
-    <% }else{ %>
-        <!-- else show only the profile info -->
-        <h1> <%= profile_user.name %> </h1>
-        <h5> <%= profile_user.email %> </h5>
-    <% } %>
-    <!-- <form action="/users/sign-out" method="POST">
-        <button type="submit">
-            Sign Out
-        </button>
-    </form> -->
-<!-- <script src="/js/userProfile.js"></script> -->
+<form action="/users/delete/<%=profile_user._id%>" method="POST">
+  <button type="submit">
+    Delete Account
+  </button>
+</form>
+
+<% }else{ %>
+<h1><%= profile_user.name %></h1>
+<h5><%= profile_user.email %></h5>
+<% } %>

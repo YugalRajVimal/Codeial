@@ -1,10 +1,81 @@
-h1 {
-  background-color: lightblue;
-  color: #4f57ea; }
+#main #left li {
+  list-style: none; }
+
+#main {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 5vh; }
+  #main #right {
+    position: fixed;
+    right: 40px;
+    top: 10vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    #main #right li {
+      list-style: none; }
+      #main #right li a {
+        text-decoration: none;
+        color: aliceblue; }
+    #main #right #createPost {
+      width: 100%;
+      padding: 10px;
+      border-radius: 20px;
+      background-color: rgba(69, 69, 69, 0.568); }
+      #main #right #createPost h4 {
+        font-size: 1.3rem; }
+      #main #right #createPost form textarea {
+        width: 80%;
+        height: 100px;
+        padding: 10px;
+        border-radius: 10px; }
+      #main #right #createPost form button {
+        font-size: 1rem;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #4f57ea;
+        color: white;
+        border: 0; }
+    #main #right #friends {
+      width: 60%;
+      height: 48vh;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 20px;
+      background-color: rgba(69, 69, 69, 0.568); }
+      #main #right #friends h4 {
+        font-size: 1.3rem; }
+      #main #right #friends #friend-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; }
+        #main #right #friends #friend-list #friend {
+          font-size: 1.2rem;
+          width: 180px;
+          margin: 4px;
+          padding: 2px;
+          border-radius: 8px;
+          background-color: #4c4c4c; }
+          #main #right #friends #friend-list #friend a {
+            text-decoration: none;
+            color: aliceblue; }
+  #main #left {
+    width: 65vw; }
+    #main #left h1 {
+      font-size: 2rem;
+      font-family: monospace;
+      color: #868686;
+      margin-left: 20px; }
 
 #users_name {
   display: flex;
-  align-items: flex-start; }
+  align-items: flex-start;
+  font-size: 1.2rem;
+  margin-left: 20px;
+  height: 1rem; }
 
 #content {
   display: flex;
@@ -12,11 +83,13 @@ h1 {
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+  border-radius: 20px;
   margin-right: 40px; }
   #content #post-image {
     width: 600px;
     overflow-x: hidden;
-    margin: 10px; }
+    margin: 10px;
+    border-radius: 10px; }
 
 #like-comment {
   display: flex;
@@ -60,23 +133,4 @@ h1 {
         font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif; }
       #current-posts-comments ul li #comment-details #user-commented > span a,
       #current-posts-comments ul li #comment-details #commented-content > span a {
-        color: black; }
-
-#main {
-  display: flex;
-  justify-content: space-around; }
-  #main > #feed {
-    height: auto;
-    width: 50%; }
-  #main > #users {
-    display: flex;
-    font-size: larger;
-    height: auto;
-    width: 20%;
-    border-left: 1px solid black; }
-    #main > #users li {
-      list-style: none;
-      margin: 10px; }
-      #main > #users li a {
-        text-decoration: none;
         color: black; }

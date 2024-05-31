@@ -1,7 +1,9 @@
-<ul>
-    <% for(var i=0;i<users.length;i++){  %>
-        <li>
-            <a href="/users/profile/?id=<%= users[i].id %>"> <%= users[i].name %> </a>
-        </li>
-    <% }%>
-</ul>
+<div id="friends">
+    <div id="friend-list">
+        <% for(var i=0;i<users.length;i++){  %>
+            <div id="friend">
+                <a href="/users/profile/?id=<%= users[i].id %>"> <%= users[i].name %> </a>
+            </div>
+        <% }%>
+    </div>
+</div>

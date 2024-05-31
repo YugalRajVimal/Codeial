@@ -1,7 +1,5 @@
 const passport = require('passport');
-
 const LocalStrategy =  require('passport-local').Strategy;
-
 const users = require('../models/user');
 
 passport.use(new LocalStrategy({
@@ -21,14 +19,8 @@ passport.use(new LocalStrategy({
         }
 }));
 
-
 //Serializing the user to decide which key is to be kept in the cookies
 passport.serializeUser(function(user,done){
-    // process.nextTick(function() {
-    //     return done(null, {
-    //       id: user.id
-    //     });
-    //   });
     return done(null,user.id); 
 });
 
@@ -41,15 +33,6 @@ passport.deserializeUser(function(id,done){
         console.log("Error in finding user");
         return done(error);
     }
-
-
-    // users.findById(id,function(error,user){
-    //     if(error){
-    //         console.log("Error in finding user");
-    //         return done(error);
-    //     }
-    //     return done(null,user);
-    // })
 });
 
 passport.checkAuthentication = function(req,res,next){
@@ -57,14 +40,12 @@ passport.checkAuthentication = function(req,res,next){
     if(req.isAuthenticated()){
         return next();
     }
-
     // If the user is not signed in
     return res.redirect('/users/sign-in');
 }
 
 passport.setAuthenticatedUser =async function(req,res,next){
     if(req.isAuthenticated()){
-        // rew.user conatin the current signed in user from the session cookie and we are just sending this to the locals for the views
         res.locals.user =await req.user
     }
     next();

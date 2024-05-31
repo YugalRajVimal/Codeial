@@ -1,10 +1,7 @@
-const comment = require('../models/comment');
 const comments = require('../models/comment');
 const posts = require('../models/post');
 
-
 module.exports.createComment = async function(req,res){
-
     try {
         let post_id = req.query.id;
         let curr_post =await posts.findById(post_id);
@@ -15,9 +12,6 @@ module.exports.createComment = async function(req,res){
                     user:await res.locals.user._id,
                     post:post_id
                 });
-                
-                // console.log(comment);
-        
                 curr_post.comment.push(comment);
                 curr_post.save();
             } catch (error) {
@@ -36,7 +30,6 @@ module.exports.deleteComment = async function(req,res){
     try {
         let comment =await comments.find({_id: req.query.id});
         let post = await posts.find({_id: comment[0].post});
-        // console.log(post[0]);
         if(comment[0].user.toString() == res.locals.user.id  || post[0].user.toString() == res.locals.user.id ){
             await comments.deleteOne({_id:req.query.id});
             await posts.findByIdAndUpdate(post[0]._id,{ $pull:{comment:req.query.id}});
@@ -44,7 +37,6 @@ module.exports.deleteComment = async function(req,res){
         else{
             console.log("You are not allowed to delete this comment");
         }
-        // console.log(comment);
         res.redirect('back');
     } catch (error) {
         console.log('Error in deleting comment.',error);

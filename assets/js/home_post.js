@@ -4,12 +4,18 @@ let createPost = function () {
   newPostForm.submit(function (e) {
     e.preventDefault();
 
+    let formData = new FormData(newPostForm[0]);
+
+
     $.ajax({
       type: "POST",
       url: "/posts/create-post",
-      data: newPostForm.serialize(),
+      data: formData,
+      processData: false,
+      contentType: false,
       success: async function (data) {
         // console.log("aa", data.data.post);
+
         let populatedPost = await populateUserDetails(data.data.post);
         let newPost = newPostDom(populatedPost);
         $("#feed>ul").prepend(newPost);
@@ -19,6 +25,8 @@ let createPost = function () {
         console.log(err.responseText);
       },
     });
+
+    newPostForm[0].reset();
   });
 };
 

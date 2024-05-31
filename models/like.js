@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const commentSchema = new mongoose.Schema({
-    content:{
-        type:String,
+const likeSchema = new mongoose.Schema({
+    liked:{
+        type:Boolean,
         required:true
     },
     user:{
@@ -19,5 +19,5 @@ const commentSchema = new mongoose.Schema({
 }
 );
 
-const comment = mongoose.model('comment',commentSchema);
-module.exports = comment;
+const like = mongoose.model('like', likeSchema);
+module.exports = like;

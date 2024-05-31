@@ -1,6 +1,6 @@
 
     <% for(var i=0;i<post.length;i++){  %>
-        <li id="post-<%= post[i]._id %>">
+        <li class="post" id="post-<%= post[i]._id %>">
             <div id="post">
                 <div id="users_name">
                     <h5> <%= post[i].user.name %> </h5>
@@ -14,7 +14,23 @@
                 <br>
                 <div id="like-comment">
                     <div id="like-button">
-                        <a href=""> <i class="fa-regular fa-heart"></i> </a>
+                        <form action="/likes/togglelike-posts/?id=<%= post[i]._id %>" method="post">
+                            <button>
+                                <%var j=0%>
+                                <%for(;j<post[i].like.length;j++){ %>
+                                    <% if( locals.user._id == post[i].like[j].user.id) { %>
+                                        <i class="fa-solid fa-heart"></i>
+                                        <%break%>
+                                    <% } %>
+                                <%}%>
+                                <%if(j>=post[i].like.length){%>
+                                    <i class="fa-regular fa-heart"></i> 
+                                <%}%>
+                            </button>
+                            <span>
+                                <%=post[i].like.length%>
+                            </span>
+                        </form>
                     </div>
                     <div id="comment">
                         <% if(locals.user){ %>
@@ -32,11 +48,6 @@
                                 <a id="delete-post-button" href="/posts/delete-post/?id=<%= post[i]._id %>">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
-                                <!-- <form action="/posts/delete-post/?id=<%= post[i]._id %>" method="POST">
-                                    <button type="submit">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </form> -->
                             <% } %>
                         </div>
                     </div>

@@ -3,7 +3,8 @@ header{
     justify-content: space-between;
     background-color: aquamarine;
     width: 100%;
-    position: sticky;
+    height: 5vh;
+    position: fixed;
     top: 0px;
     &>ul{
         li{

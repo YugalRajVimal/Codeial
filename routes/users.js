@@ -1,25 +1,16 @@
 const express = require('express');
-
 const router = express.Router();
-
 const passport = require('passport');
-
 const usersController = require('../controllers/users_controller');
-
-console.log("Users Router is Loaded");
+const { uploadAvatar } = require('../config/fileUploadMiddleware');
 
 router.get('/profile',passport.checkAuthentication,usersController.profile);
-
 router.get('/sign-up',usersController.signUp);
-
 router.get('/sign-in',usersController.signIn);
-
 router.get('/sign-out',usersController.destroySession);
-
 router.post('/create',usersController.create);
-
-router.post('/update',usersController.updateUser);
-
+router.post('/update',uploadAvatar.single('avatar'),usersController.updateUser);
+router.post('/delete/:id',usersController.deleteUser);
 router.get('/get-user',usersController.getUser);
 
 //use passport as a middleware to authenticate 
